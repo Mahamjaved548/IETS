@@ -1,0 +1,302 @@
+<?php
+
+$conn = mysqli_connect('localhost','root','','contact_db') or die('connection failed');
+
+if(isset($_POST['submit'])){
+
+   $name = mysqli_real_escape_string($conn, $_POST['name']);
+   $email = mysqli_real_escape_string($conn, $_POST['email']);
+   $number = $_POST['number'];
+   $date = $_POST['date'];
+
+   $insert = mysqli_query($conn, "INSERT INTO `contact_form`(name, email, number, date) VALUES('$name','$email','$number','$date')") or die('query failed');
+
+   if($insert){
+      $message[] = 'appointment made successfully!';
+   }else{
+      $message[] = 'appointment failed';
+   }
+
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>IETTS</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+   <!-- bootstrap cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css">
+
+   <!-- custom css file link  -->
+  <!-- <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">  -->
+   <!-- <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" /> -->
+  <!-- <link rel="stylesheet" type="text/css" href="plugins/cubeportfolio/css/cubeportfolio.min.css"> -->
+  <link href="css/nivo-lightbox.css" rel="stylesheet" />
+  <link href="css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
+  <link href="css/owl.carousel.css" rel="stylesheet" media="screen" />
+   <link href="css/owl.theme.css" rel="stylesheet" media="screen" />
+   <link href="css/animate.css" rel="stylesheet" /> 
+   <link rel="stylesheet" href="css/style.css" rel="stylesheet">
+
+</head>
+<body>
+   
+<!-- header section starts  -->
+
+<header class="header fixed-top">
+
+   <div class="container">
+
+      <div class="row align-items-center justify-content-between">
+
+         <a href="#home" class="logo">IE<span>TS</span></a>
+
+         <nav class="nav">
+            <a href="#home">Home</a>
+            <a href="#about">About us</a>
+            <a href="#recruitment">Healthcare Recruitment</a>
+            <a href="#courses">Courses</a>
+            <a href="#study">Study Medicine Abroad</a>
+            <a href="#contact">Contact</a>
+         </nav>
+
+         <a href="#contact" class="link-btn">Send us a query</a>
+
+         <div id="menu-btn" class="fas fa-bars"></div>
+
+      </div>
+
+   </div>
+
+</header>
+
+
+ <section id="doctor-form" class="doctor-form">
+   <div class="container" >
+      <div class="title">Apply for a job now by submitting your details below</div>
+      <div class="content">
+        <form  method="post" id="d-form" class="d-form">
+          <div class="user-details">
+            <div class="input-box-full">
+               <span class="details">Country of Origin</span>
+               <select required>
+                  <option>UK-United Kingdom</option>
+                  <option>USA</option>
+                  <option>Germany</option>
+                  <option>Pakistan</option>
+                  <option>India</option>
+                </select>
+             </div>
+            <div class="input-box">
+              <span class="details">Full Name</span>
+              <input type="text" placeholder="Enter your name" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Last Name</span>
+              <input type="text" placeholder="Enter your last name" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Email</span>
+              <input type="text" placeholder="Enter your email" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Phone Number</span>
+              <input type="text" placeholder="Enter your number" required>
+            </div>
+            <div class="input-box-full">
+               <span class="details">Please rate your verbal and written level of English </span>
+               <select required>
+                  <option>IELTS/OET pass</option>
+                  <option>IELTS/OET in progress</option>
+                  <option>Good English skills no test taken</option>
+                  <option>No English at present</option>
+                </select>
+             </div>
+            <div class="input-box">
+              <span class="details">Grade</span>
+              <input type="text" placeholder="Enter your grade" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Speciality</span>
+              <input type="text" placeholder="Confirm your Speciality" required>
+            </div>
+            <div class="input-box">
+               <span class="details">GMC Number</span>
+               <input type="text" placeholder="Enter your GMC Number" required>
+             </div>
+             <div class="input-box">
+               <span class="details">GMC Number</span>
+               <input type="checkbox" required>
+               <label for="vehicle1"> IELTS</label><br>
+               <input type="checkbox" >
+               <label for="vehicle2"> PLAB</label><br>
+               <input type="checkbox">
+               <label for="vehicle3">MCEM</label><br>
+               <input type="checkbox">
+               <label for="vehicle3">Other GMC-Acceptable Postgrad Qualification</label><br>
+               <input type="checkbox">
+               <label for="vehicle3">None of the above</label><br>
+             </div>
+             <div class="input-box-file">
+               <span class="details">CV upload(Optional)</span>
+               <input type="file" required>
+             </div>
+          </div>
+          <div class="gender-details">
+            <input type="radio" name="gender" id="dot-1">
+            <input type="radio" name="gender" id="dot-2">
+            <input type="radio" name="gender" id="dot-3">
+            <span class="gender-title">Gender</span>
+            <div class="category">
+              <label for="dot-1">
+              <span class="dot one"></span>
+              <span class="gender">Male</span>
+            </label>
+            <label for="dot-2">
+              <span class="dot two"></span>
+              <span class="gender">Female</span>
+            </label>
+            <label for="dot-3">
+              <span class="dot three"></span>
+              <span class="gender">Prefer not to say</span>
+              </label>
+            </div>
+          </div>
+          <div class="button">
+            <input type="submit" value="Register">
+          </div>
+        </form>
+      </div>
+    </div>
+
+ </section> 
+
+<!-- contact section ends -->
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+   <div class="box-container container">
+
+      <div class="box">
+         <i class="fas fa-phone"></i>
+         <h3>Phone number</h3>
+         <p>+44 (0) 7393 085 535</p>
+        
+      </div>
+      
+      <div class="box">
+         <i class="fas fa-map-marker-alt"></i>
+         <h3>Company details</h3>
+         <p>Company registered in England and Wales (registration number 11334099)</p>
+      </div>
+
+      <div class="box">
+         <i class="fas fa-clock"></i>
+         <h3>Opening hours</h3>
+         <p>09:00am to 05:00pm</p>
+      </div>
+
+      <div class="box">
+         <i class="fas fa-envelope"></i>
+         <h3>Email address</h3>
+         <p>info@fnk-associates.com</p>
+      </div>
+
+   </div>
+
+   <div class="credit"> &copy; copyright @ <?php echo date('Y'); ?> by <span>2022</span>  </div>
+
+</section>
+
+<!-- footer section ends -->
+
+
+
+
+
+
+
+
+
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+<script>
+   function showText() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("show");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more"; 
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less"; 
+    moreText.style.display = "inline";
+  }
+}
+
+function showStudy() {
+  var dots = document.getElementById("s-dots");
+  var moreText = document.getElementById("more-p1");
+  var moreTextTwo = document.getElementById("more-p2");
+  var moreTextThree = document.getElementById("more-p3");
+  var hide = document.getElementById("h-dots");
+  if (moreText.style.display === "none" && moreTextTwo.style.display === "none" && moreTextThree.style.display === "none") {
+    dots.style.display = "none";
+    hide.style.display="inline";
+    moreText.style.display = "inline";
+    moreTextTwo.style.display="inline";
+    moreTextThree.style.display="inline";
+  } else {
+    dots.style.display = "inline";
+    hide.style.display="none";
+  //  dots.innerHTML = "Hide Details"; 
+    moreText.style.display = "none";
+    moreTextTwo.style.display = "none";
+    moreTextThree.style.display = "none";
+  }
+}
+// function hideStudy() {
+//   var dots = document.getElementById("s-dots");
+//   var moreText = document.getElementById("more-p1");
+//   var hide = document.getElementById("h-dots");
+//   if (moreText.style.display === "inline") {
+//    dots.style.display = "none";
+//     hide.style.display="inline";
+//   //  dots.innerHTML = "Hide Details"; 
+//     moreText.style.display = "none";
+//   } else {
+//    dots.style.display = "inline";
+//     //dots.innerHTML = "Know more..."; 
+//     moreText.style.display = "none";
+//   }
+// }
+</script>
+	<!-- Core JavaScript Files -->
+   <script src="js/jquery.min.js"></script>	 
+   <script src="js/bootstrap.min.js"></script>
+   <script src="js/jquery.easing.min.js"></script>
+  <script src="js/wow.min.js"></script>
+  <script src="js/jquery.scrollTo.js"></script>
+  <script src="js/jquery.appear.js"></script>
+  <script src="js/stellar.js"></script>
+  <script src="plugins/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/nivo-lightbox.min.js"></script>
+   <script src="js/custom.js"></script>
+
+</body>
+</html>

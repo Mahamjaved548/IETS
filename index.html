@@ -1,0 +1,821 @@
+<?php
+
+$conn = mysqli_connect('localhost','root','','contact_db') or die('connection failed');
+
+if(isset($_POST['submit'])){
+
+   $name = mysqli_real_escape_string($conn, $_POST['name']);
+   $email = mysqli_real_escape_string($conn, $_POST['email']);
+   $number = $_POST['number'];
+   $date = $_POST['date'];
+
+   $insert = mysqli_query($conn, "INSERT INTO `contact_form`(name, email, number, date) VALUES('$name','$email','$number','$date')") or die('query failed');
+
+   if($insert){
+      $message[] = 'appointment made successfully!';
+   }else{
+      $message[] = 'appointment failed';
+   }
+
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>IETS</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+   <!-- bootstrap cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css">
+
+   <!-- custom css file link  -->
+  <!-- <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">  -->
+   <!-- <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" /> -->
+  <!-- <link rel="stylesheet" type="text/css" href="plugins/cubeportfolio/css/cubeportfolio.min.css"> -->
+  <link href="css/nivo-lightbox.css" rel="stylesheet" />
+  <link href="css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
+  <link href="css/owl.carousel.css" rel="stylesheet" media="screen" />
+   <link href="css/owl.theme.css" rel="stylesheet" media="screen" />
+   <link href="css/animate.css" rel="stylesheet" /> 
+   <link rel="stylesheet" href="css/style.css" rel="stylesheet">
+   <link rel="stylesheet" href="css/mystyle.css" rel="stylesheet">
+
+</head>
+<body>
+   
+<!-- header section starts  -->
+
+<header class="header fixed-top">
+
+   <div class="container">
+
+      <div class="row align-items-center justify-content-between">
+
+         <!-- <a href="#home" class="logo">IE<span>TS</span></a> -->
+         <a class="navbar-brand" href="#"><img src="images/iets-logo - Version 1 - JPG Format.jpg" class="img-responsive" style="width: 140px;  height: 80px; margin-top: -15px; margin-bottom: -15px;"></a>
+
+
+         <nav class="nav">
+            <a href="#home">Home</a>
+            <a href="#about">About us</a>
+            <a href="#recruitment">Healthcare Recruitment</a>
+            <a href="#courses">Courses</a>
+            <a href="#study">Study Medicine Abroad</a>
+            <a href="#contact">Contact</a>
+         </nav>
+
+         <a href="#contact" class="link-btn">Send us a query</a>
+
+         <div id="menu-btn" class="fas fa-bars"></div>
+
+      </div>
+
+   </div>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+   <div class="container">
+
+      <div class="row min-vh-100 align-items-center">
+         <div class="content text-center text-md-left">
+            <h3>International Education and Training Solutions -IETS</h3>
+            <p>Getting you ready for tomorrow</p>
+         </div>
+      </div>
+
+   </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- about section starts  -->
+
+<section class="about" id="about">
+
+   <div class="container">
+
+      <div class="row align-items-center">
+
+         <div class="col-md-6 image">
+            <img src="images/staff.webp" class="w-100 mb-5 mb-md-0" alt="">
+         </div>
+
+         <div class="col-md-6 content">
+            <span><b>About Us</b></span>
+            <p>Founded in 2013 as a marketing consultancy, IETS has evolved to 
+               include education, training and recruitment solutions. <br>
+               <!-- <span id="dots">....</span><p id="more"> -->
+                  Based in London and Muscat, we are a trusted provider for our clients worldwide.<br><br>
+                  We have helped global brands to start ups and no matter the problem - whether it is to 
+                  write a content page to developing an in house training programme- IETS is there to help.  <br><br>
+                  Please <a href="#contact"><b>contact us</b></a> today, to see how we can help you.
+
+               </p>
+            <!-- </p> -->
+            <!-- <a id="show" class="link-btn" onclick="showText()">Show more</a> -->
+         </div>
+
+      </div>
+
+   </div>
+
+</section>
+
+<section class="recruitment" id="recruitment">
+
+    <h1 class="heading">Healthcare Recruitment </h1>
+     <div class="container">
+      <p>We have job opportunities for Healthcare Professionals in a variety roles. 
+         Please click the link below to find out more
+      </p>
+     </div>
+ 
+    <div class="box-container container">
+ 
+       <div class="box">
+          <img src="images/doctors.png" alt="">
+          <h3>Doctors</h3>
+          <a href="#doctor" class="apply-btn">Recruitment</a>
+       </div>
+ 
+       <div class="box">
+          <img src="images/Nurses.jpg" alt="">
+          <h3>Nurses</h3>
+          <a href="#nurse" class="apply-btn">Recruitment</a>
+       </div>
+ 
+       <div class="box">
+          <img src="images/healthcare-staff.png" alt="">
+          <h3>Other Healthcare Staff</h3>
+          <a href="#other-staff" class="apply-btn">Recruitment</a>
+       </div>
+ 
+    </div>
+ 
+ </section>
+
+ <section id="doctor" class="doctor">
+   <div class="doctor-content">
+      <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+         <h1 class="heading">Doctor Recruitment</h1>
+         </div>
+      <div class="container">
+         <!-- <div class="row">
+            <div class="col-lg-12"> -->
+               <div class="wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s">
+               <ul class="lead-list">
+                  <h3>Our criteria:</h3>
+                  <span>In the UK it is a requirement to be registered with the General Medical Council (GMC) before being allowed to practice medicine. <br>
+
+                     All overseas doctors must possess an acceptable primary medical qualification (PMQ) in order to apply for registration. <br>
+                     
+                     In most cases, it is mandatory for overseas doctors to undertake the <a href="https://www.gmc-uk.org/registration-and-licensing/join-the-register/plab/a-guide-to-the-plab-test">Professional and Linguistic Assessment Board (PLAB)</a> before commencing any NHS jobs or practising as a doctor in the UK.<br>
+                     
+                     Registration with the GMC is usually obtained through:<br>
+                     a) sitting the PLAB exam <br>
+                     b) through having a recognised higher qualification – a list can be found <a href="https://www.gmc-uk.org/registration-and-licensing/join-the-register/before-you-apply/acceptable-postgraduate-qualifications"> here</a>.<br>
+                     <br>
+                     
+                     <ul class="lead-list">
+                        <b>You must also meet English language requirements by passing one of the following English language exams:</b><br><br>
+                        <li><span class="fa-solid fa-circle-check"></span> 
+                           <span class="list">IETLS test (Doctors need to achieve an IELTS score of 7.5 overall with a minimum score of 7.0 in each testing area of speaking,<br>
+                               listening, reading and writing)
+                           </span>
+                           </li>
+                           <li><span class="fa-solid fa-circle-check"></span> 
+                              <span class="list">OET test  (Doctors need to take the medicine version of the test and get a grade B in each testing area of speaking, listening,<br>
+                                  reading and writing)
+                              </span>
+                              </li>
+                           </ul>
+                     
+                        If you are interested, please click the Apply Now button and submit your details. 
+                        We will review your information and advise of next steps
+                        </span>
+
+               </div>
+            </div>			
+         <div class="text-center wow bounceIn" data-wow-delay="0.4s">
+            <button id="modalD" class="doctor-btn" onclick="openDoctorModal()">Apply Now</button>
+              </div>		
+      </div>
+   </div>		
+ </section>
+ 
+ 
+
+
+ <section id="nurse" class="nurse">
+   
+   <div class="doctor-content">
+      <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+         <h1 class="heading">Nurse Recruitment</h1>
+         </div>
+      
+      <div class="container">
+         <div class="row">
+            <div class="col-md-12 content">
+           
+            <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.1s">
+            <h4 class="h-light"><b>To Apply:</b></h4>
+            </div>
+               <div class="well well-trans">
+               <div class="wow fadeInRight" data-wow-delay="0.1s">
+
+                  <ul class="lead-list">
+                     <li><span class="fa-solid fa-circle-check"></span> 
+                        <span class="list">If you are a qualified Nurse with good English skills, looking to live 
+                           and work in the UK, we’d love to hear <br>from you.
+                        </span>
+                        </li>
+                        <li><span class="fa-solid fa-circle-check"></span> 
+                           <span class="list">To be eligible for a job in the UK, Nurses need at least one year of clinical experience and IELTS level 7 (6.5 writing) or<br>
+                               OET level B English Language scores.
+                           </span>
+                           </li>
+                           <li><span class="fa-solid fa-circle-check"></span> 
+                              <span class="list">We have a wide range of general and specialist nursing roles across acute wards, 
+                                 paediatrics, theatres, community,<br>
+                                 mental health and midwifery in a variety of locations.
+                                 </span>
+                              </li>  
+                              <li><span class="fa-solid fa-circle-check"></span> 
+                                 <span class="list">In case of any query, feel free to <a href="#contact">Contact us</a></span>
+                                 </li>    
+                  </ul>
+               <div class="text-center wow bounceIn" data-wow-delay="0.4s">
+                  <button id="modalN" class="nurse-btn" onclick="openNurseModal()">Apply Now</button>
+            </div>
+               </div>
+               </div>
+            </div>
+         </section>
+
+ <!-- The Modal  -->
+<div id="iModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close" onclick="closeNurseModal()">&times;</span>
+    <div class="container" >
+      <div class="title"><b>Apply for a job now by submitting your details below</b></div>
+      <div class="content">
+        <form  method="post" id="d-form" class="d-form">
+          <div class="user-details">
+            <div class="input-box">
+               <span class="details">Country of Origin</span>
+               <input type="text" placeholder="Enter your country" required>
+             </div>
+            <div class="input-box">
+              <span class="details">Full Name</span>
+              <input type="text" placeholder="Enter your name" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Last Name</span>
+              <input type="text" placeholder="Enter your last name" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Email</span>
+              <input type="text" placeholder="Enter your email" required>
+            </div>
+            <div class="input-box">
+              <span class="details">Phone Number</span>
+              <input type="text" placeholder="Enter your number" required>
+            </div>
+            <div class="input-box">
+               <span class="details">Please rate your verbal and written level of English </span>
+               <select required>
+                  <option>IELTS/OET pass</option>
+                  <option>IELTS/OET in progress</option>
+                  <option>Good English skills no test taken</option>
+                  <option>No English at present</option>
+                </select>
+             </div>
+           
+             <div class="input-box-file">
+               <span class="details">CV upload(Optional)</span>
+               <input type="file" required>
+             </div>
+             <div class="input-box">
+               <span class="details">Relevant qualifications (Optional)</span>
+               <textarea rows="4" placeholder="Example: Bachelor of Nursing / Nursing Diploma, other" required></textarea>
+             </div>
+             <div class="experience-details">
+               <input type="radio" name="experience" id="dot-1">
+               <input type="radio" name="experience" id="dot-2">
+               <input type="radio" name="experience" id="dot-3">
+               <span class="experience-title">Do you have at least 1 year of clinical (patient-facing) nursing experience?</span>
+               <div class="category">
+                 <label for="dot-1">
+                 <span class="dot one"></span>
+                 <span class="experience">Yes</span>
+               </label>
+               <label for="dot-2">
+                 <span class="dot two"></span>
+                 <span class="experience">No</span>
+               </label>
+               </div>
+             </div>
+             <div class="input-box-full">
+               <span class="details">Additional comments</span>
+               <textarea  rows="4" placeholder="Enter additional comments"></textarea>
+             </div>
+          </div>
+        
+          <div class="button">
+            <input type="submit" value="Submit">
+          </div>
+        </form>
+      </div>
+   </div>
+  </div>
+</div>
+
+ <!-- The Modal  -->
+ <div id="stModal" class="modal">
+
+   <!-- Modal content -->
+   <div class="modal-content">
+     <span class="closeS" onclick="closeStaffModal()">&times;</span>
+     <div class="container" >
+       <div class="title"><b>Apply for a job now by submitting your details below</b></div>
+       <div class="content">
+         <form  method="post" id="d-form" class="d-form">
+           <div class="user-details">
+             <div class="input-box">
+                <span class="details">Country of Origin</span>
+                <input type="text" placeholder="Enter your country" required>
+              </div>
+             <div class="input-box">
+               <span class="details">Full Name</span>
+               <input type="text" placeholder="Enter your name" required>
+             </div>
+             <div class="input-box">
+               <span class="details">Last Name</span>
+               <input type="text" placeholder="Enter your last name" required>
+             </div>
+             <div class="input-box">
+               <span class="details">Email</span>
+               <input type="text" placeholder="Enter your email" required>
+             </div>
+             <div class="input-box">
+               <span class="details">Phone Number</span>
+               <input type="text" placeholder="Enter your number" required>
+             </div>
+             <div class="input-box">
+                <span class="details">Please rate your verbal and written level of English </span>
+                <select required>
+                   <option>IELTS/OET pass</option>
+                   <option>IELTS/OET in progress</option>
+                   <option>Good English skills no test taken</option>
+                   <option>No English at present</option>
+                 </select>
+              </div>
+            
+              <div class="input-box-file">
+                <span class="details">CV upload(Optional)</span>
+                <input type="file" required>
+              </div>
+              <div class="input-box">
+                <span class="details">Relevant qualifications (Optional)</span>
+                <textarea rows="4" placeholder="Example: social care qualification/experience/other" required></textarea>
+              </div>
+              <div class="input-box-full">
+                <span class="details">Additional comments</span>
+                <textarea  rows="4" placeholder="Enter additional comments"></textarea>
+              </div>
+           </div>
+         
+           <div class="button">
+             <input type="submit" value="Submit">
+           </div>
+         </form>
+       </div>
+    </div>
+   </div>
+ </div>
+
+ <!-- Doctor Modal -->
+<div id="oModal" class="modal">
+
+   <div class="modal-content">
+     <span class="closeO" onclick="closeDoctorModal()">&times;</span>
+     <div class="title"><b>Apply for a job now by submitting your details below</b></div>
+     <div class="content">
+       <form  method="post" id="d-form" class="d-form">
+         <div class="user-details">
+            <div class="input-box">
+               <span class="details">Country</span>
+               <input type="text" placeholder="Enter your Country" required>
+             </div>
+           <div class="input-box">
+             <span class="details">Full Name</span>
+             <input type="text" placeholder="Enter your name" required>
+           </div>
+           <div class="input-box">
+             <span class="details">Last Name</span>
+             <input type="text" placeholder="Enter your last name" required>
+           </div>
+           <div class="input-box">
+             <span class="details">Email</span>
+             <input type="text" placeholder="Enter your email" required>
+           </div>
+           <div class="input-box">
+             <span class="details">Phone Number</span>
+             <input type="text" placeholder="Enter your number" required>
+           </div>
+           <div class="input-box">
+            <span class="details">IELTS/OET overall grade</span>
+            <input type="text" placeholder="Enter your grade" required>
+          </div>
+           <div class="input-box-full">
+              <span class="details">Please rate your verbal and written level of English </span>
+              <select required>
+                 <option>IELTS/OET pass</option>
+                 <option>IELTS/OET in progress</option>
+                 <option>Good English skills no test taken</option>
+                 <option>No English at present</option>
+               </select>
+            </div>
+           <div class="input-box">
+             <span class="details">Medical Speciality</span>
+             <input type="text" placeholder="Confirm your Speciality" required>
+           </div>
+           <div class="input-box">
+              <span class="details">GMC Number(if applicable)</span>
+              <input type="text" placeholder="Enter your GMC Number" required>
+            </div>
+            
+            <div class="input-box-file">
+              <span class="details">CV upload(Optional)</span>
+              <input type="file" required>
+            </div>
+            <div class="input-box-full">
+              <span class="details">Additional comments</span>
+              <textarea  rows="5" placeholder="Enter additional comments"></textarea>
+            </div>
+         </div>
+         
+         <div class="button">
+           <input type="submit" value="Submit">
+         </div>
+       </form>
+     </div>
+  </div>
+   </div>
+ 
+ </div> 
+
+<script>
+
+// Get the modal
+// var modal = document.getElementById("iModal");
+// var modalO = document.getElementById("oModal");
+// var modalSt = document.getElementById("stModal");
+
+// // Get the button that opens the modal
+// var btn = document.getElementById("modalN");
+// var btnO = document.getElementById("modalD");
+// var btnS = document.getElementById("modalS");
+
+
+// // Get the <span> element that closes the modal
+// var span = document.getElementsByClassName("close")[0];
+// var spanO = document.getElementsByClassName("closeO")[0];
+// var spanStaff = document.getElementsByClassName("closeS")[0];
+
+// When the user clicks the button, open the modal 
+// btn.onclick = function() {
+//    console.log("clicked");
+//   modal.style.display = "block";
+// }
+// btnO.onclick = function() {
+//    console.log("clicked");
+//   modalO.style.display = "block";
+// }
+// btnS.onclick = function() {
+//    console.log("clicked");
+//   modalSt.onclick.display= "block";
+// }
+
+// // When the user clicks on <span> (x), close the modal
+// span.onclick = function() {
+//   modal.style.display = "none";
+// }
+// spanO.onclick = function() {
+//   modalO.style.display = "none";
+// }
+// spanStaff.onclick = function() {
+//   modalSt.style.display = "none";
+// }
+
+// When the user clicks anywhere outside of the modal, close it
+// window.onclick = function(event) {
+//   if (event.target == modal) {
+//     modal.style.display = "none";
+//   }
+//   window.onclick = function(event) {
+//   if (event.target == modalO) {
+//     modalO.style.display = "none";
+//   }
+//   }
+</script>			
+         </div>		
+      </div>
+   </div>		
+ </section>
+
+ <section class="other-staff" id="other-staff">
+   <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+      <h1 class="heading">Other Healthcare Staff Recruitment </h1>
+      </div>
+   
+   <div class="container">
+      <div class="row">
+         <div class="col-md-12 content">
+        
+         <div class="wow fadeInUp" data-wow-offset="0" data-wow-delay="0.1s">
+         </div>
+            <div class="well well-trans">
+            <div class="wow fadeInRight" data-wow-delay="0.1s">
+
+               <ul class="lead-list">
+                  <li><span class="fa-solid fa-circle-check"></span> 
+                     <span class="list">We offer a wide range of full and part-time social care opportunities in residential, day centre and supported living<br>
+                         settings. 
+                     </span>
+                     </li>
+                     <li><span class="fa-solid fa-circle-check"></span> 
+                        <span class="list">Our roles involve working with adults, young people, children and the elderly with mental health issues, challenging behaviours, <br>
+                           physical or learning disabilities, or Dementia/Alzheimer's, enabling them to lead fulfilled lives and gain further independence.                        </span>
+                        </li>
+                  <li><span class="fa-solid fa-circle-check"></span> 
+                     <span class="list">Whilst social care includes personal care and support to vulnerable people and children, care assistants and support workers<br>
+                         will offer so much more  including emotional support, guidance, encouragement and in many cases, a friendship.
+                        </span>
+                     </li>    
+                     <li><span class="fa-solid fa-circle-check"></span> 
+                        <span class="list">Working in social care through Medacs comes with a range on benefits including.                        </span>
+                        </li>
+               <li><span class="fa-solid fa-circle-check"></span> 
+                  <span class="list">Full training which is aligned to Care Certificate Standards.</span>
+                  </li>  
+                  <li><span class="fa-solid fa-circle-check"></span> 
+                     <span class="list">Competitive pay rates.</span>
+                     </li>   
+                     <li><span class="fa-solid fa-circle-check"></span> 
+                        <span class="list">Flexible shift patterns to suit your lifestyle.                        </span>
+                        </li>
+                        <li><span class="fa-solid fa-circle-check"></span> 
+                           <span class="list">Excellent opportunities for career progression - including free training to achieve a qualification in social care.                           </span>
+                           </li>
+               </ul>
+            </div>
+            </div>
+            <div class="text-center wow bounceIn" data-wow-delay="0.4s">
+               <button id="modalS" class="staff-btn" onclick="openStaffModal()">Apply Now</button>
+         </div>	
+         </div>
+
+</section>
+
+<section class="courses" id="courses">
+   <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+      <h1 class="heading">Courses</h1>
+      </div>
+   
+   <div class="container">
+        
+            <div class="well well-trans">
+            <div class="wow fadeInRight" data-wow-delay="0.1s">
+
+              <p>Further details to be provided later in 2022.  Please <a href="#contact">contact us </a> if you want to discuss.
+            </p>
+            </div>
+            </div>
+            </div>
+
+</section>
+
+
+
+   <section class="study" id="study">
+      <div class="wow fadeInDown" data-wow-offset="0" data-wow-delay="0.1s">
+         <h1 class="heading">Study Medicine Abroad</h1>
+         </div>
+      
+      <div class="container">
+           
+               <div class="well well-trans">
+               <div class="wow fadeInRight" data-wow-delay="0.1s">
+   
+                 <p>Further details to be provided later in 2022.  Please <a href="#contact">contact us</a> if you want to discuss.
+               </p>
+               </div>
+               </div>
+            </div>
+   </section>
+
+<!-- reviews section ends -->
+
+<!-- contact section starts  -->
+
+<section class="contact" id="contact">
+
+   <h1 class="heading">Send query</h1>
+   <!-- action="<?php echo $_SERVER['PHP_SELF']; ?>" -->
+
+   <form  method="post" id="c-form" class="c-form">
+      <!-- <?php 
+         if(isset($message)){
+            foreach($message as $message){
+               echo '<p class="message">'.$message.'</p>';
+            }
+         }
+      ?> -->
+      <span>Your name :</span>
+      <input type="text" name="name" placeholder="Enter your name" class="box" required>
+      <span>Your email :</span>
+      <input type="email" name="email" placeholder="Enter your email" class="box" required>
+      <span>Your number :</span>
+      <input type="number" name="number" placeholder="Enter your number" class="box" required>
+      <span>Your query:</span>
+      <textarea class="box" rows="3" cols="60" placeholder="Enter your query" ></textarea>
+      <input type="submit" value="Send" name="submit" class="link-btn">
+   </form>  
+
+</section>
+
+<!-- contact section ends -->
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+   <div class="box-container container">
+
+      <div class="box">
+         <i class="fas fa-phone"></i>
+         <h3>Phone number</h3>
+         <p>+44 (0) 7393 085 535</p>
+        
+      </div>
+      
+      <div class="box">
+         <i class="fas fa-map-marker-alt"></i>
+         <h3>Company details</h3>
+         <p>Address
+            251 Staines Road, Hounslow, TW3 3JJ</p>
+      </div>
+
+      <div class="box">
+         <i class="fas fa-clock"></i>
+         <h3>Opening hours</h3>
+         <p>09:00am to 05:00pm</p>
+      </div>
+
+      <div class="box">
+         <i class="fas fa-envelope"></i>
+         <h3>Email address</h3>
+         <p>info@iets.co.uk</p>
+      </div>
+
+   </div>
+
+   <div class="credit"> &copy; copyright  <?php echo date('Y'); ?> <a href = "Privacy _Policy.pdf" download = "file" target="_blank">Privacy Policy</a> &nbsp; <a href = "Terms_and_Conditions.pdf" download = "file" target="_blank">Terms & Conditions</a>  </div>
+
+</section>
+
+<!-- footer section ends -->
+
+
+
+
+
+
+
+
+
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+<script>
+   function showText() {
+  var dots = document.getElementById("dots");
+  var moreText = document.getElementById("more");
+  var btnText = document.getElementById("show");
+
+  if (dots.style.display === "none") {
+    dots.style.display = "inline";
+    btnText.innerHTML = "Read more"; 
+    moreText.style.display = "none";
+  } else {
+    dots.style.display = "none";
+    btnText.innerHTML = "Read less"; 
+    moreText.style.display = "inline";
+  }
+}
+
+function openNurseModal(){
+var modal = document.getElementById("iModal");
+// // Get the button that opens the modal
+
+console.log("clicked");
+modal.style.display = "block";
+}
+
+function closeNurseModal(){
+   var modal = document.getElementById("iModal");
+   modal.style.display = "none";
+}
+function openDoctorModal(){
+var modal = document.getElementById("oModal");
+// // Get the button that opens the modal
+
+console.log("clicked");
+modal.style.display = "block";
+}
+
+function closeDoctorModal(){
+   var modal = document.getElementById("oModal");
+   modal.style.display = "none";
+}
+function openStaffModal(){
+var modal = document.getElementById("stModal");
+// // Get the button that opens the modal
+
+console.log("clicked");
+modal.style.display = "block";
+}
+
+function closeStaffModal(){
+   var modal = document.getElementById("stModal");
+   modal.style.display = "none";
+}
+function showStudy() {
+  var dots = document.getElementById("s-dots");
+  var moreText = document.getElementById("more-p1");
+  var moreTextTwo = document.getElementById("more-p2");
+  var moreTextThree = document.getElementById("more-p3");
+  var hide = document.getElementById("h-dots");
+  if (moreText.style.display === "none" && moreTextTwo.style.display === "none" && moreTextThree.style.display === "none") {
+    dots.style.display = "none";
+    hide.style.display="inline";
+    moreText.style.display = "inline";
+    moreTextTwo.style.display="inline";
+    moreTextThree.style.display="inline";
+  } else {
+    dots.style.display = "inline";
+    hide.style.display="none";
+  //  dots.innerHTML = "Hide Details"; 
+    moreText.style.display = "none";
+    moreTextTwo.style.display = "none";
+    moreTextThree.style.display = "none";
+  }
+}
+// function hideStudy() {
+//   var dots = document.getElementById("s-dots");
+//   var moreText = document.getElementById("more-p1");
+//   var hide = document.getElementById("h-dots");
+//   if (moreText.style.display === "inline") {
+//    dots.style.display = "none";
+//     hide.style.display="inline";
+//   //  dots.innerHTML = "Hide Details"; 
+//     moreText.style.display = "none";
+//   } else {
+//    dots.style.display = "inline";
+//     //dots.innerHTML = "Know more..."; 
+//     moreText.style.display = "none";
+//   }
+// }
+</script>
+	<!-- Core JavaScript Files -->
+   <script src="js/jquery.min.js"></script>	 
+   <script src="js/bootstrap.min.js"></script>
+   <script src="js/jquery.easing.min.js"></script>
+  <script src="js/wow.min.js"></script>
+  <script src="js/jquery.scrollTo.js"></script>
+  <script src="js/jquery.appear.js"></script>
+  <script src="js/stellar.js"></script>
+  <script src="plugins/cubeportfolio/js/jquery.cubeportfolio.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/nivo-lightbox.min.js"></script>
+   <script src="js/custom.js"></script>
+
+</body>
+</html>
